@@ -16,6 +16,40 @@ prerequisite
 
 Docker, docker-compose and optionnaly docker-machine need to be installed. You also need a xivo 15.15 installed. To get xivo, go the xivo.io, it's a free software ;)
 
+XiVO configuration
+------------------
+
+Add a user to rabbitmq
+
+    rabbitmqctl add_user xivo xivo
+    rabbitmqctl set_user_tags xivo administrator
+    rabbitmqctl set_permissions -p / xivo ".*" ".*" ".*" 
+
+Configure agentd, add a config file /etc/xivo-agentd/conf.d/my-config.yml 
+
+    rest_api:
+      listen: 0.0.0.0
+
+Configure postgresql, change the listen addresses in /etc/postgresql/9.1/main/postgresql.conf to
+
+    listen_addresses = '*'
+
+Add in /etc/postgresql/9.1/main/pg_hba.conf
+
+    host    all             all             your_subnet/24          md5
+
+Restart Postgresql
+
+    service postgresql restart
+
+Configure asterisk manager, /etc/asterisk/manager.conf on xivo_cti_user section
+
+    permit=your_subnet/255.255.0.0
+
+And reload the asterisk configuration:
+
+    asterisk -rx "manager reload"
+
 Installation
 ------------
 
@@ -73,36 +107,3 @@ To get LB infos, by default xivo/xivo
 
 Warning, please be sure the loadblancer timeout is the connection time on xivo client is configured correctly. By default on xivo client it's 120s and on my config it's 125s, be sure if you changing on xivo client, the timeout on LB is greater than the client.
 
-XiVO configuration
-------------------
-
-Add a user to rabbitmq
-
-    rabbitmqctl add_user xivo xivo
-    rabbitmqctl set_user_tags xivo administrator
-    rabbitmqctl set_permissions -p / xivo ".*" ".*" ".*" 
-
-Configure agentd, add a config file /etc/xivo-agentd/conf.d/my-config.yml 
-
-    rest_api:
-      listen: 0.0.0.0
-
-Configure postgresql, change the listen addresses in /etc/postgresql/9.1/main/postgresql.conf to
-
-    listen_addresses = '*'
-
-Add in /etc/postgresql/9.1/main/pg_hba.conf
-
-    host    all             all             your_subnet/24          md5
-
-Restart Postgresql
-
-    service postgresql restart
-
-Configure asterisk manager, /etc/asterisk/manager.conf on xivo_cti_user section
-
-    permit=your_subnet/255.255.0.0
-
-And reload the asterisk configuration:
-
-    asterisk -rx "manager reload"
