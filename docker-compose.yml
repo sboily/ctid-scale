@@ -1,0 +1,31 @@
+ctid:
+  image: xivo/ctid
+  volumes:
+   # With my shared directory on docker-mahcine
+   - /shared/ctid-scale/config/ctid:/etc/xivo-ctid/conf.d
+   # Without docker-machine
+   #- ./config/ctid:/etc/xivo-ctid/conf.d
+  environment:
+   - SERVICE_5003_NAME=cti-5003
+   - SERVICE_5004_NAME=cti-5004
+   - SERVICE_9495_NAME=cti-http
+   - SERVICE_TAGS=cti
+   #- SERVICE_CHECK_TTL=10s
+lb:
+  image: xivo/lb-consul-template
+  ports:
+   - "5003:5003"
+   - "5004:5004"
+   - "9495:9495"
+   - "1936:1936"
+  expose:
+    - "5003"
+    - "1936"
+  container_name: lb
+registrator:
+   image: gliderlabs/registrator:latest
+   volumes:
+     - /var/run/docker.sock:/tmp/docker.sock
+   net: "host"
+   command: -internal -resync 10 -tags registrator -deregister "always" consul://192.168.1.124:8500
+   container_name: registrator
