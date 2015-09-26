@@ -16,6 +16,8 @@ prerequisite
 
 Docker, docker-compose and optionnaly docker-machine need to be installed. You also need a xivo 15.15 installed. To get xivo, go the xivo.io, it's a free software ;)
 
+Please note consul is already installed on xivo.
+
 XiVO configuration
 ------------------
 
@@ -97,7 +99,7 @@ To get service ID, you can list all services with this url
 
     http://ip_consul:8500/v1/catalog/services
 
-To get every serviceID fron a service.
+To get every serviceID from a service.
 
     http://ip_consul:8500/v1/catalog/service/cti-5003
 
