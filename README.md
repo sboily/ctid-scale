@@ -55,7 +55,7 @@ And reload the asterisk configuration:
 Installation
 ------------
 
-To configure ctid, please edit config/ctid/cti.yml and adapt the config and edited docker-compose.yml.
+Set the address IP of XiVO on docker-compose.yml on section extra_hosts.
 
 To build ctid on docker:
 
