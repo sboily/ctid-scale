@@ -5,30 +5,30 @@ rest_api:
 
 # Agentd
 agentd:
-  host: 192.168.1.124
+  host: xivo
   timeout: 3
 
 # Provd
 provd:
-  host: 192.168.1.124
+  host: xivo
   port: 8666
 
 # Dird (Directory daemon) connection informations.
 dird:
-  host: 192.168.1.124
+  host: xivo
   port: 9489
   version: 0.1
 
 # xivo-auth (authentication daemon) connection informations.
 auth:
-    host: 192.168.1.124
+    host: xivo
     port: 9497
     timeout: 2
     https: True
 
 # Event bus (AMQP) connection informations.
 bus:
-  host: 192.168.1.124
+  host: xivo
   port: 5672
   username: xivo
   password: xivo
@@ -36,11 +36,11 @@ bus:
   exchange_type: topic
 
 # Database connection informations.
-db_uri: postgresql://asterisk:proformatique@192.168.1.124/asterisk
+db_uri: postgresql://asterisk:proformatique@xivo/asterisk
 
 # AMI asterisk
 ipbx_connection:
-  ipaddress: 192.168.1.124
+  ipaddress: xivo
   ipport: 5038
   username: xivo_cti_user
   password: phaickbebs9
