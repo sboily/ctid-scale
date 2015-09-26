@@ -1,11 +1,38 @@
-Scaling xivo ctid with consul, consul-template, haproxy, docker, docker-compose
+Scaling xivo ctid with consul, consul-template, haproxy, docker, docker-compose and registrator
+
+* consul: http://consul.io
+* consul-template: https://github.com/hashicorp/consul-template
+* haproxy: http://haproxy.org
+* docker: http://docker.com
+* docker-compose: https://docs.docker.com/compose/
+* docker-machine: https://docs.docker.com/machine/
+* registrator: http://gliderlabs.com/registrator/latest/
+* xivo: http://xivo.io
+
+Please note, it's possible to do the same thing with many other services on xivo, it's only a guide to scale services.
+
+prerequisite
+------------
+
+Docker, docker-compose and optionnaly docker-machine need to be installed. You also need a xivo 15.15 installed. To get xivo, go the xivo.io, it's a free software ;)
+
+Installation
+------------
 
 To configure ctid, please edit config/ctid/cti.yml and adapt the config and edited docker-compose.yml.
+
+To build ctid on docker:
+
+    mkdir $HOME/tmp
+    cd $HOME/tmp
+    git clone https://github.com/xivo-pbx/xivo-ctid.git
+    cd xivo-ctid
+    docker build -t xivo/ctid .
 
 To build lb:
 
     cd dockerfile/consul-template
-    docker build -t lb-consul-template .
+    docker build -t xivo/lb-consul-template .
 
 To start :
 
