@@ -108,6 +108,10 @@ To get LB infos, by default xivo/xivo
 
     http://ip_docker_lb:1936/
 
+To get stats from docker
+
+    docker stats $(docker ps -q)
+
 Warning, please be sure the loadblancer timeout and the connection time on xivo client is configured correctly. By default on xivo client, it's 120s and on my default lb config it's 125s, be sure if you are changing on xivo client this timeout, the timeout on LB need to be greater than the client.
 
 XiVO client
