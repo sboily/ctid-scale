@@ -44,9 +44,10 @@ Restart Postgresql
 
     service postgresql restart
 
-Configure asterisk manager, /etc/asterisk/manager.conf on xivo_cti_user section
+On xivo 15.17, configure manager user and add a config file in /etc/asterisk/manager.d/myconfig.conf 
 
-    permit=your_subnet/255.255.0.0
+    [xivo_cti_user]
+    permit=your_subnet/255.255.255.0
 
 And reload the asterisk configuration:
 
