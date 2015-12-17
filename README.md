@@ -47,6 +47,19 @@ And reload the asterisk configuration:
 
     asterisk -rx "manager reload"
 
+Update your cti config, add config file in /etc/xivo-ctid/conf.d/myconfig.yml
+
+    rest_api:
+      http:
+        listen: 0.0.0.0
+    service_discovery:
+      advertise_address: 192.168.1.124  # IP address of this XiVO, reachable from outside
+      check_url: http://192.168.1.124:9495/0.1/infos
+
+Restart your CTI.
+
+    service xivo-ctid restart
+
 Installation
 ------------
 
