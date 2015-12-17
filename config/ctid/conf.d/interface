@@ -1,0 +1,10 @@
+#!/bin/sh
+
+IP=$(/sbin/ip route|awk '/default/ { print $3 }')
+
+echo "
+service_discovery:
+  advertise_address: $IP
+"
+
+#check_url: http://$IP:9495/0.1/infos

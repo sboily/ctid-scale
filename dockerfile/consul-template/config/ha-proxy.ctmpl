@@ -16,11 +16,11 @@ defaults
 listen ctid-5003 *:5003
     mode tcp
     option tcplog {{range service "xivo-ctid"}}
-    server {{.Name}}_{{.ID}} {{.Address}}:{{.Port}} check{{end}}
+    server {{.Name}}_{{.ID}} {{.Address}}:5003 check{{end}}
 
 listen ctid-http *:9495
     mode http {{range service "xivo-ctid"}}
-    server {{.Name}}_{{.ID}} {{.Address}}:9495 check{{end}}
+    server {{.Name}}_{{.ID}} {{.Address}}:{{.Port}} check{{end}}
 
 listen stats *:1936
     mode http
