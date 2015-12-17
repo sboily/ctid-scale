@@ -63,7 +63,7 @@ Restart your CTI.
 Installation
 ------------
 
-Set the address IP of XiVO on docker-compose.yml on section extra_hosts.
+Set the address IP of XiVO on docker-compose.yml on section extra_hosts and modify the key.yml to have the good credentials. You can get it on your xivo on /var/lib/xivo-auth-keys/xivo-ctid-key.yml.
 
 To build ctid on docker:
 
@@ -71,7 +71,7 @@ To build ctid on docker:
 
 To build lb:
 
-    docker build -t xivo/lb-consul-template -f dockerfile/consul-template/Dockerfile .
+    docker build -t xivo/lb-consul-template -f dockerfile/consul-template/Dockerfile dockerfile/consul-template/
 
 To start :
 

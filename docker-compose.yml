@@ -2,9 +2,12 @@ ctid:
   image: xivo/ctid
   volumes:
     # With my shared directory on docker-mahcine
-    - /shared/ctid-scale/config/ctid:/etc/xivo-ctid/conf.d
+    #- /shared/ctid-scale/config/ctid/conf.d:/etc/xivo-ctid/conf.d
+    #- /shared/ctid-scale/config/ctid/key.yml:/tmp/xivo-ctid-key.yml
     # Without docker-machine
-    #- ./config/ctid:/etc/xivo-ctid/conf.d
+    - ./config/ctid/conf.d:/etc/xivo-ctid/conf.d
+    - ./config/ctid/key.yml:/tmp/xivo-ctid-key.yml
+  container_name: ctid
   extra_hosts:
     - xivo:192.168.1.124
 lb:
