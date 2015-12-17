@@ -6,6 +6,7 @@ rest_api:
 # Agentd
 agentd:
   host: xivo
+  verify_vertificate: False
 
 # Provd
 provd:
@@ -14,10 +15,13 @@ provd:
 # Dird (Directory daemon) connection informations.
 dird:
   host: xivo
+  verify_vertificate: False
 
 # xivo-auth (authentication daemon) connection informations.
 auth:
-    host: xivo
+  host: xivo
+  key_file: /tmp/xivo-ctid-key.yml
+  verify_vertificate: False
 
 # Event bus (AMQP) connection informations.
 bus:
