@@ -4,12 +4,12 @@ MAINTAINER Sylvain Boily "sboily@avencall.com"
 ENV VERSION 0.12.0
 
 RUN apt-get -yqq update \
-    && apt-get -yqq install procps
+    && apt-get -yqq install procps unzip
 
 WORKDIR /usr/src
-ADD https://github.com/hashicorp/consul-template/archive/v${VERSION}.tar.gz /usr/src/
-RUN tar xfvz consul-template_${VERSION}_linux_amd64.tar.gz
-RUN mv consul-template_${VERSION}_linux_amd64/consul-template /usr/bin
+ADD https://releases.hashicorp.com/consul-template/${VERSION}/consul-template_${VERSION}_linux_amd64.zip /usr/src/
+RUN unzip consul-template_${VERSION}_linux_amd64.zip
+RUN mv consul-template /usr/bin
 
 RUN rm -rf consul-template*
 

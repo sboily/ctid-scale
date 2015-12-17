@@ -67,16 +67,11 @@ Set the address IP of XiVO on docker-compose.yml on section extra_hosts.
 
 To build ctid on docker:
 
-    mkdir $HOME/tmp
-    cd $HOME/tmp
-    git clone https://github.com/xivo-pbx/xivo-ctid.git
-    cd xivo-ctid
-    docker build -t xivo/ctid .
+    docker build -t xivo/ctid https://github.com/xivo-pbx/xivo-ctid.git
 
 To build lb:
 
-    cd dockerfile/consul-template
-    docker build -t xivo/lb-consul-template .
+    docker build -t xivo/lb-consul-template -f dockerfile/consul-template/Dockerfile .
 
 To start :
 
