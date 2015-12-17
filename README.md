@@ -1,4 +1,4 @@
-Scaling xivo ctid with consul, consul-template, haproxy, docker, docker-compose and registrator
+Scaling xivo ctid with consul, consul-template, haproxy, docker and docker-compose
 
 * consul: http://consul.io
 * consul-template: https://github.com/hashicorp/consul-template
@@ -6,7 +6,6 @@ Scaling xivo ctid with consul, consul-template, haproxy, docker, docker-compose 
 * docker: http://docker.com
 * docker-compose: https://docs.docker.com/compose/
 * docker-machine: https://docs.docker.com/machine/
-* registrator: http://gliderlabs.com/registrator/latest/
 * xivo: http://xivo.io
 
 Please note, it's possible to do the same thing with many other services on xivo, it's only a guide to scale services.
@@ -14,7 +13,7 @@ Please note, it's possible to do the same thing with many other services on xivo
 prerequisite
 ------------
 
-Docker, docker-compose and optionnaly docker-machine need to be installed. You also need a xivo 15.15 installed. To get xivo, go the xivo.io, it's a free software ;)
+Docker, docker-compose and optionnaly docker-machine need to be installed. You also need a xivo 15.19 installed. To get xivo, go the xivo.io, it's a free software ;)
 
 Please note consul is already installed on xivo.
 
@@ -26,11 +25,6 @@ Add a user to rabbitmq
     rabbitmqctl add_user xivo xivo
     rabbitmqctl set_user_tags xivo administrator
     rabbitmqctl set_permissions -p / xivo ".*" ".*" ".*" 
-
-Configure agentd, add a config file /etc/xivo-agentd/conf.d/my-config.yml 
-
-    rest_api:
-      listen: 0.0.0.0
 
 Configure postgresql, change the listen addresses in /etc/postgresql/9.1/main/postgresql.conf to
 
@@ -44,7 +38,7 @@ Restart Postgresql
 
     service postgresql restart
 
-On xivo 15.17, configure manager user and add a config file in /etc/asterisk/manager.d/myconfig.conf 
+Configure manager user and add a config file in /etc/asterisk/manager.d/myconfig.conf 
 
     [xivo_cti_user]
     permit=your_subnet/255.255.255.0

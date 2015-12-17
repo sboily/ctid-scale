@@ -1,13 +1,13 @@
 from haproxy
 MAINTAINER Sylvain Boily "sboily@avencall.com"
 
-ENV VERSION 0.10.0
+ENV VERSION 0.12.0
 
 RUN apt-get -yqq update \
     && apt-get -yqq install procps
 
 WORKDIR /usr/src
-ADD https://github.com/hashicorp/consul-template/releases/download/v${VERSION}/consul-template_${VERSION}_linux_amd64.tar.gz /usr/src/
+ADD https://github.com/hashicorp/consul-template/archive/v${VERSION}.tar.gz /usr/src/
 RUN tar xfvz consul-template_${VERSION}_linux_amd64.tar.gz
 RUN mv consul-template_${VERSION}_linux_amd64/consul-template /usr/bin
 
