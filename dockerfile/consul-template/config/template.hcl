@@ -1,5 +1,5 @@
-consul = "192.168.1.124:8500"
-token = "9b5077e7aebe5924e6ad2d7a75c614e9f705cac73eb5c0a6fa9be8c428b6f1f9"
+consul = "192.168.32.80:8500"
+token = "c3b2ae2c52056c1c2212aa72c2e0dc63f2c95039da933a47d5144bdac704003a"
 reap = true
 
 ssl {

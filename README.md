@@ -69,9 +69,19 @@ To build ctid on docker:
 
     docker build -t xivo/ctid https://github.com/xivo-pbx/xivo-ctid.git
 
+Update the consul-template configuration : dockerfile/consul-template/config/template.hcl
+
+You need to add your consul ip and token.
+
 To build lb:
 
     docker build -t xivo/lb-consul-template -f dockerfile/consul-template/Dockerfile dockerfile/consul-template/
+
+
+Update you ctid configuration:
+
+- config/ctid/conf.d/cti.yml
+- config/ctid/key.yml
 
 To start :
 

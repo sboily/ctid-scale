@@ -34,10 +34,10 @@ consul:
   scheme: https
   host: xivo
   verify: False
-  token: 9b5077e7aebe5924e6ad2d7a75c614e9f705cac73eb5c0a6fa9be8c428b6f1f9
+  token: c3b2ae2c52056c1c2212aa72c2e0dc63f2c95039da933a47d5144bdac704003a
 
-discovery_service:
-  check_url: http://consul:9495/0.1/infos
+service_discovery:
+  check_url: http://192.168.32.41:9495/0.1/infos
 
 # Database connection informations.
 db_uri: postgresql://asterisk:proformatique@xivo/asterisk

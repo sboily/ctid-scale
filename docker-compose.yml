@@ -10,7 +10,6 @@ ctid:
   container_name: ctid
   extra_hosts:
     - xivo:192.168.32.80
-    - consul:192.168.32.80
 lb:
   image: xivo/lb-consul-template
   ports:
