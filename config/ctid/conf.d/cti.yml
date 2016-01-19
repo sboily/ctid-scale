@@ -37,7 +37,7 @@ consul:
   token: 9b5077e7aebe5924e6ad2d7a75c614e9f705cac73eb5c0a6fa9be8c428b6f1f9
 
 discovery_service:
-  check_url: http://192.168.1.10:9495/0.1/infos
+  check_url: http://consul:9495/0.1/infos
 
 # Database connection informations.
 db_uri: postgresql://asterisk:proformatique@xivo/asterisk

@@ -9,7 +9,8 @@ ctid:
     - ./config/ctid/key.yml:/tmp/xivo-ctid-key.yml
   container_name: ctid
   extra_hosts:
-    - xivo:192.168.1.124
+    - xivo:192.168.32.80
+    - consul:192.168.32.80
 lb:
   image: xivo/lb-consul-template
   ports:
