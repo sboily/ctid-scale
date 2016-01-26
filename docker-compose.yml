@@ -7,7 +7,6 @@ ctid:
     # Without docker-machine
     - ./config/ctid/conf.d:/etc/xivo-ctid/conf.d
     - ./config/ctid/key.yml:/tmp/xivo-ctid-key.yml
-  container_name: ctid
   extra_hosts:
     - xivo:192.168.32.80
 lb:
