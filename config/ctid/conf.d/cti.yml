@@ -31,7 +31,9 @@ bus:
 
 # Consul configuration
 consul:
+  scheme: https
   host: xivo
+  port: 8500
   verify: False
   token: c3b2ae2c52056c1c2212aa72c2e0dc63f2c95039da933a47d5144bdac704003a
 
