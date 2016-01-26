@@ -14,8 +14,7 @@ defaults
     timeout connect 10s
 
 listen ctid-5003 *:5003
-    mode tcp
-    option tcplog {{range service "xivo-ctid"}}
+    mode tcp {{range service "xivo-ctid"}}
     server {{.Name}}_{{.ID}} {{.Address}}:5003 check{{end}}
 
 listen ctid-http *:9495
