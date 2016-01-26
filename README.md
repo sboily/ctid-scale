@@ -110,11 +110,11 @@ The consul-cli tools is available on xivo, you need to install with
 
 To get service ID, you can list all services with this url
 
-    http://ip_consul:8500/v1/catalog/services
+    https://ip_consul:8500/v1/catalog/services
 
 To get every serviceID from a service.
 
-    http://ip_consul:8500/v1/catalog/service/cti-5003
+    https://ip_consul:8500/v1/catalog/service/cti-5003
 
 To get LB infos, by default xivo/xivo
 
