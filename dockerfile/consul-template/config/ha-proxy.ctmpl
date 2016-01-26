@@ -13,15 +13,18 @@ defaults
     timeout server 125s
     timeout connect 10s
 
-listen ctid-5003 *:5003
+listen ctid-5003 
+    bind *:5003
     mode tcp {{range service "xivo-ctid"}}
     server {{.Name}}_{{.ID}} {{.Address}}:5003 check{{end}}
 
-listen ctid-http *:9495
+listen ctid-http 
+    bind *:9495
     mode http {{range service "xivo-ctid"}}
     server {{.Name}}_{{.ID}} {{.Address}}:{{.Port}} check{{end}}
 
-listen stats *:1936
+listen stats 
+    bind *:1936
     mode http
     stats enable
     stats uri /

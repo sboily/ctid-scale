@@ -1,4 +1,4 @@
-from haproxy
+from haproxy:1.6.3
 MAINTAINER Sylvain Boily "sboily@avencall.com"
 
 ENV VERSION 0.12.1
