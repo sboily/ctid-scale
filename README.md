@@ -113,11 +113,11 @@ or magical command:
 
 To get service ID, you can list all services with this url
 
-    https://ip_consul:8500/v1/catalog/services
+    https://ip_consul:8500/v1/catalog/services?token=one_ring
 
 To get every serviceID from a service.
 
-    https://ip_consul:8500/v1/catalog/service/cti-5003
+    https://ip_consul:8500/v1/catalog/service/xivo-ctid?token=on_ring
 
 To get LB infos, by default xivo/xivo
 
