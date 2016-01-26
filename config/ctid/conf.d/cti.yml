@@ -31,13 +31,14 @@ bus:
 
 # Consul configuration
 consul:
-  scheme: https
   host: xivo
   verify: False
   token: c3b2ae2c52056c1c2212aa72c2e0dc63f2c95039da933a47d5144bdac704003a
 
+# Discovery configuration
 service_discovery:
-  check_url: http://192.168.32.41:9495/0.1/infos
+  advertise_address: auto
+  advertise_address_interface: eth0
 
 # Database connection informations.
 db_uri: postgresql://asterisk:proformatique@xivo/asterisk

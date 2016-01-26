@@ -13,7 +13,7 @@ Please note, it's possible to do the same thing with many other services on xivo
 prerequisite
 ------------
 
-Docker, docker-compose and optionnaly docker-machine need to be installed. You also need a xivo 15.19 installed. To get xivo, go the xivo.io, it's a free software ;)
+Docker, docker-compose and optionnaly docker-machine need to be installed. You also need a xivo 16.01 installed. To get xivo, go the xivo.io, it's a free software ;)
 
 Please note consul is already installed on xivo.
 
@@ -53,8 +53,8 @@ Update your cti config, add config file in /etc/xivo-ctid/conf.d/myconfig.yml
       http:
         listen: 0.0.0.0
     service_discovery:
-      advertise_address: 192.168.1.124  # IP address of this XiVO, reachable from outside
-      check_url: http://192.168.1.124:9495/0.1/infos
+      advertise_address: auto
+      advertise_address_interface: eth0
 
 Restart your CTI.
 
