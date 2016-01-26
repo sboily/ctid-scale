@@ -100,13 +100,16 @@ To clean docker-compose
     docker-compose kill
     docker-compose rm -f
 
-To clean consul services
-
-    consul-cli service-deregister serviceID
+To clean consul services:
 
 The consul-cli tools is available on xivo, you need to install with
 
     apt-get install consul-cli
+    consul-cli service-deregister serviceID
+
+or magical command:
+
+    consul-cli agent-services --ssl --ssl-verify=0 | jq '.[] | {"ID": .ID, "Service": .Service} | select(.Service == "xivo-ctid") | .ID' | xargs -p -L1 consul-cli service-deregister --ssl --ssl-verify=0 
 
 To get service ID, you can list all services with this url
 
