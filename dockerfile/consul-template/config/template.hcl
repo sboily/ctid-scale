@@ -10,5 +10,5 @@ ssl {
 template {
   source = "/config/ha-proxy.ctmpl"
   destination  = "/usr/local/etc/haproxy/haproxy.cfg"
-  command = "haproxy -f /usr/local/etc/haproxy/haproxy.cfg -p /var/run/haproxy/haproxy.pid -sf $(cat /var/run/haproxy/haproxy.pid)"
+  command = "haproxy -f /usr/local/etc/haproxy/haproxy.cfg -sf $(pidof haproxy) &"
 }

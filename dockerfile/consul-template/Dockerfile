@@ -1,10 +1,13 @@
 from haproxy
 MAINTAINER Sylvain Boily "sboily@avencall.com"
 
-ENV VERSION 0.12.0
+ENV VERSION 0.12.1
 
 RUN apt-get -yqq update \
-    && apt-get -yqq install procps unzip
+    && apt-get -yqq install \
+                    procps \
+                    unzip \
+                    sysvinit-utils
 
 WORKDIR /usr/src
 ADD https://releases.hashicorp.com/consul-template/${VERSION}/consul-template_${VERSION}_linux_amd64.zip /usr/src/
