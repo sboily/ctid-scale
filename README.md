@@ -5,17 +5,14 @@ Scaling xivo ctid with consul, consul-template, haproxy, docker and docker-compo
 * haproxy: http://haproxy.org
 * docker: http://docker.com
 * docker-compose: https://docs.docker.com/compose/
-* docker-machine: https://docs.docker.com/machine/
 * xivo: http://xivo.io
-
-Please note, it's possible to do the same thing with many other services on xivo, it's only a guide to scale services.
 
 prerequisite
 ------------
 
-Docker, docker-compose and optionnaly docker-machine need to be installed. You also need a xivo 16.01 installed. To get xivo, go the xivo.io, it's a free software ;)
+Docker and docker-compose need to be installed. You also need a xivo 16.01 installed. To get xivo, go to xivo.io, it's a free software ;)
 
-Please note consul is already installed on xivo.
+Please note consul is already installed on xivo by default.
 
 XiVO configuration
 ------------------
@@ -65,18 +62,13 @@ Installation
 
 Set the address IP of XiVO on docker-compose.yml on section extra_hosts and modify the key.yml to have the good credentials. You can get it on your xivo on /var/lib/xivo-auth-keys/xivo-ctid-key.yml.
 
-To build ctid on docker:
-
-    docker build -t xivo/ctid https://github.com/xivo-pbx/xivo-ctid.git
-
 Update the consul-template configuration : dockerfile/consul-template/config/template.hcl
 
 You need to add your consul ip and token.
 
-To build lb:
+To build it:
 
-    docker build -t xivo/lb-consul-template -f dockerfile/consul-template/Dockerfile dockerfile/consul-template/
-
+    make build
 
 Update you ctid configuration:
 
@@ -100,6 +92,13 @@ To clean docker-compose
     docker-compose kill
     docker-compose rm -f
 
+To get stats from docker
+
+    docker stats $(docker ps -q)
+
+Consul
+------
+
 To clean consul services:
 
 The consul-cli tools is available on xivo, you need to install with
@@ -119,13 +118,12 @@ To get every serviceID from a service.
 
     https://ip_consul:8500/v1/catalog/service/xivo-ctid?token=on_ring
 
-To get LB infos, by default xivo/xivo
+Haproxy
+-------
 
-    http://ip_docker_lb:1936/
+To use the haproxy web interface, please connect to (login/pass: xivo/xivo)
 
-To get stats from docker
-
-    docker stats $(docker ps -q)
+    http://your_ip_expose:1936/
 
 Warning, please be sure the loadblancer timeout and the connection time on xivo client is configured correctly. By default on xivo client, it's 120s and on my default lb config it's 125s, be sure if you are changing on xivo client this timeout, the timeout on LB need to be greater than the client.
 
