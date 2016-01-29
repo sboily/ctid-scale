@@ -16,4 +16,6 @@ lb:
     - "9495"
     - "1936"
   container_name: lb
-  command: ["-consul", "192.168.1.124:8500", "-log-level", "debug", "-config", "/config/template.hcl", "-token", "9b5077e7aebe5924e6ad2d7a75c614e9f705cac73eb5c0a6fa9be8c428b6f1f9"]
+  environment:
+    - CONSUL_TOKEN=9b5077e7aebe5924e6ad2d7a75c614e9f705cac73eb5c0a6fa9be8c428b6f1f9
+  command: ["-consul", "192.168.1.124:8500", "-log-level", "debug", "-config", "/config/template.hcl"]
