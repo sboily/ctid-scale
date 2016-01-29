@@ -60,20 +60,20 @@ Restart your CTI.
 Installation
 ------------
 
-Set the address IP of XiVO on docker-compose.yml on section extra_hosts and modify the key.yml to have the good credentials. You can get it on your xivo on /var/lib/xivo-auth-keys/xivo-ctid-key.yml.
-
-Update the consul-template configuration : dockerfile/consul-template/config/template.hcl
-
-You need to add your consul ip and token.
-
 To build it:
 
     make build
 
-Update you ctid configuration:
+Update key.yml to have the good credentials for the CTID. You can get it on your xivo on /var/lib/xivo-auth-keys/xivo-ctid-key.yml.
+Update ctid.yml to have the good token to connect on consul.
 
 - config/ctid/conf.d/cti.yml
 - config/ctid/key.yml
+
+On docker-compose.yml:
+
+- Set ip address of your xivo on extra_host
+- Update the consul ip and token on section lb
 
 To start :
 
