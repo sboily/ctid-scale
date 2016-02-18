@@ -1,7 +1,7 @@
 from haproxy:1.6.3
 MAINTAINER Sylvain Boily "sboily@avencall.com"
 
-ENV VERSION 0.12.2
+ENV VERSION 0.13.0
 
 RUN apt-get -yqq update \
     && apt-get -yqq install \
@@ -10,8 +10,7 @@ RUN apt-get -yqq update \
                     sysvinit-utils
 
 WORKDIR /usr/src
-#ADD https://releases.hashicorp.com/consul-template/${VERSION}/consul-template_${VERSION}_linux_amd64.zip /usr/src/
-ADD https://circle-artifacts.com/gh/duggan/build-consul-template/26/artifacts/0/tmp/circle-artifacts.eNv3KPD/consul-template_${VERSION}_linux_amd64.zip /usr/src/
+ADD https://releases.hashicorp.com/consul-template/${VERSION}/consul-template_${VERSION}_linux_amd64.zip /usr/src/
 RUN unzip consul-template_${VERSION}_linux_amd64.zip
 RUN mv consul-template /usr/bin
 RUN rm -rf consul-template*
