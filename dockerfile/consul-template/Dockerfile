@@ -1,7 +1,7 @@
 from haproxy:1.6.3
 MAINTAINER Sylvain Boily "sboily@avencall.com"
 
-ENV VERSION 0.13.0
+ENV VERSION 0.14.0
 
 RUN apt-get -yqq update \
     && apt-get -yqq install \
