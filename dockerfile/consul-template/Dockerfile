@@ -1,13 +1,9 @@
-from haproxy:1.6.3
+from haproxy:1.6.4-alpine
 MAINTAINER Sylvain Boily "sboily@avencall.com"
 
 ENV VERSION 0.14.0
 
-RUN apt-get -yqq update \
-    && apt-get -yqq install \
-                    procps \
-                    unzip \
-                    sysvinit-utils
+RUN apk add --update unzip
 
 WORKDIR /usr/src
 ADD https://releases.hashicorp.com/consul-template/${VERSION}/consul-template_${VERSION}_linux_amd64.zip /usr/src/

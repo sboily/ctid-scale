@@ -5,6 +5,8 @@ ctid:
     - ./config/ctid/key.yml:/tmp/xivo-ctid-key.yml
   extra_hosts:
     - xivo:192.168.1.124
+  environment:
+    - XIVO_UUID=607796fc-24e2-4e26-8009-cbb48a205512
 lb:
   image: xivo/lb-consul-template
   ports:
