@@ -68,8 +68,9 @@ Export variables configuration (see env file for example):
 - CONSUL_PORT
 - CONSUL_TOKEN
 
-* Update key.yml to have the good credentials for the CTID. You can get it on your xivo on /var/lib/xivo-auth-keys/xivo-ctid-key.yml.
-* Update ctid.yml to have the good token to connect on consul.
+Update key.yml to have the good credentials for the CTID. You can get it on your xivo on /var/lib/xivo-auth-keys/xivo-ctid-key.yml.
+
+Update ctid.yml to have the good token to connect on consul.
 
 To get your XIVO_UUID:
 
