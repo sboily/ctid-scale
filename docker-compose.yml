@@ -4,9 +4,9 @@ ctid:
     - ./config/ctid/conf.d:/etc/xivo-ctid/conf.d
     - ./config/ctid/key.yml:/tmp/xivo-ctid-key.yml
   extra_hosts:
-    - xivo:192.168.1.124
+    - xivo:${XIVO_HOST}
   environment:
-    - XIVO_UUID=607796fc-24e2-4e26-8009-cbb48a205512
+    - XIVO_UUID=${XIVO_UUID}
 lb:
   image: xivo/lb-consul-template
   ports:
@@ -19,5 +19,5 @@ lb:
     - "1936"
   container_name: lb
   environment:
-    - CONSUL_TOKEN=9b5077e7aebe5924e6ad2d7a75c614e9f705cac73eb5c0a6fa9be8c428b6f1f9
-  command: ["-consul", "192.168.1.124:8500", "-log-level", "debug", "-config", "/config/template.hcl"]
+    - CONSUL_TOKEN=${CONSUL_TOKEN}
+  command: ["-consul", "${CONSUL_HOST}:${CONSUL_PORT}", "-log-level", "debug", "-config", "/config/template.hcl"]

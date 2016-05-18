@@ -1,16 +1,16 @@
 Scaling xivo ctid with consul, consul-template, haproxy, docker and docker-compose
 
-* consul: http://consul.io
-* consul-template: https://github.com/hashicorp/consul-template
+* consul: http://consul.io >= 0.6.4
+* consul-template: https://github.com/hashicorp/consul-template >= 0.14.0
 * haproxy: http://haproxy.org
-* docker: http://docker.com
-* docker-compose: https://docs.docker.com/compose/
-* xivo: http://xivo.io
+* docker: http://docker.com >= 1.11.1
+* docker-compose: https://docs.docker.com/compose/ >= 1.7.0
+* xivo: http://xivo.io >= 16.06
 
 prerequisite
 ------------
 
-Docker and docker-compose need to be installed. You also need a xivo 16.01 installed. To get xivo, go to xivo.io, it's a free software ;)
+Docker and docker-compose need to be installed. You also need a xivo 16.06 installed. To get xivo, go to xivo.io, it's a free software ;)
 
 Please note consul is already installed on xivo by default.
 
@@ -27,7 +27,7 @@ Configure postgresql, change the listen addresses in /etc/postgresql/9.1/main/po
 
     listen_addresses = '*'
 
-Add in /etc/postgresql/9.1/main/pg_hba.conf
+Add in /etc/postgresql/9.4/main/pg_hba.conf
 
     host    all             all             your_subnet/24          md5
 
@@ -59,6 +59,14 @@ Restart your CTI.
 
 Installation
 ------------
+
+Export variables:
+
+- XIVO_HOST
+- XIVO_UUID
+- CONSUL_HOST
+- CONSUL_PORT
+- CONSUL_TOKEN
 
 To build it:
 
@@ -114,7 +122,7 @@ The consul-cli tools is available on xivo, you need to install with
 
 or magical command:
 
-    consul-cli agent-services --ssl --ssl-verify=0 | jq '.[] | {"ID": .ID, "Service": .Service} | select(.Service == "xivo-ctid") | .ID' | xargs -p -L1 consul-cli service-deregister --ssl --ssl-verify=0 
+    consul-cli agent services --ssl --ssl-verify=0 | jq '.[] | {"ID": .ID, "Service": .Service} | select(.Service == "xivo-ctid") | .ID' | xargs -p -L1 consul-cli service deregister --ssl --ssl-verify=0 
 
 To get service ID, you can list all services with this url
 
