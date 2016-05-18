@@ -117,7 +117,7 @@ To clean consul services:
 The consul-cli tools is available on xivo, you need to install with
 
     apt-get install consul-cli
-    consul-cli service-deregister serviceID
+    consul-cli service deregister serviceID
 
 or magical command:
 
