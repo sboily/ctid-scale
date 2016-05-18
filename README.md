@@ -23,7 +23,7 @@ Add a user to rabbitmq
     rabbitmqctl set_user_tags xivo administrator
     rabbitmqctl set_permissions -p / xivo ".*" ".*" ".*" 
 
-Configure postgresql, change the listen addresses in /etc/postgresql/9.1/main/postgresql.conf to
+Configure postgresql, change the listen addresses in /etc/postgresql/9.4/main/postgresql.conf to
 
     listen_addresses = '*'
 
@@ -60,17 +60,13 @@ Restart your CTI.
 Installation
 ------------
 
-Export variables:
+Export variables configuration (see env file for example):
 
 - XIVO_HOST
 - XIVO_UUID
 - CONSUL_HOST
 - CONSUL_PORT
 - CONSUL_TOKEN
-
-To build it:
-
-    make build
 
 Update key.yml to have the good credentials for the CTID. You can get it on your xivo on /var/lib/xivo-auth-keys/xivo-ctid-key.yml.
 Update ctid.yml to have the good token to connect on consul.
@@ -84,10 +80,12 @@ To get your XIVO_UUID:
 - config/ctid/conf.d/cti.yml
 - config/ctid/key.yml
 
-On docker-compose.yml:
+Execution
+---------
 
-- Set ip address of your xivo on extra_host
-- Update the consul ip and token on section lb
+To build it:
+
+    make build
 
 To start :
 
